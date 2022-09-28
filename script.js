@@ -1,10 +1,10 @@
 let inputtedSphere = document.getElementById("sphere-input");
 let inputtedCylinder = document.getElementById("cylinder-input");
 let inputtedAxis = document.getElementById("axis-input");
-let convertButton = document.getElementById("convert");
-let convertedSphereOutput = document.getElementById("converted-sphere");
-let convertedCylinderOutput = document.getElementById("converted-cylinder");
-let convertedAxisOutput = document.getElementById("converted-axis");
+let convertButton = document.getElementById("convert-btn");
+let convertedSphereOutput = document.getElementById("converted-sphere-output");
+let convertedCylinderOutput = document.getElementById("converted-cylinder-output");
+let convertedAxisOutput = document.getElementById("converted-axis-output");
 
 //sphere - cylinder. Axis + or minus 90
 let calculateSphereConversion = () => {

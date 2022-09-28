@@ -10,22 +10,43 @@
     <title>Lens Cylinder Converter</title>
 </head>
 <body>
-    
-    <h1>Lens Cylinder Converter</h1>
+    <div id="wrapper">
 
-    <label for="sphere">Sphere</label>
-    <input type="text" name="sphere" id="sphere-input" title="sphere" size="12" placeholder=""/><br>
-    <label for="cylinder">Cylinder</label>
-    <input type="text" name="cylinder" id="cylinder-input" title="cylinder" size="12" placeholder=""/><br>
-    <label for="axis">Axis</label>
-    <input type="text" name="axis" id="axis-input" title="axis" size="12" placeholder=""/><br>
-    <button type="button" id="convert">Convert</button>
+        <h1>Lens Cylinder Converter</h1>
 
-    <p id="converted-sphere"></p>
-    <p id="converted-cylinder"></p>
-    <p id="converted-axis"></p>
+        <div id="main-content">
+
+            <div id="input-section">
+                <label class="input-label" for="sphere">Sphere</label>
+                <input type="text" name="sphere" id="sphere-input" class="input-box" title="sphere" size="12" placeholder=""/><br>
+                <label class="input-label" for="cylinder">Cylinder</label>
+                <input type="text" name="cylinder" id="cylinder-input" class="input-box" title="cylinder" size="12" placeholder=""/><br>
+                <label class="input-label" for="axis">Axis</label>
+                <input type="text" name="axis" id="axis-input" class="input-box" title="axis" size="12" placeholder=""/><br>
+            </div>
+
+            <div id="output-section">
+                <div id="converted-sphere" class="output-box">
+                    <p id="converted-sphere-output">0.00</p>
+                </div>
+        
+                <div id="converted-cylinder" class="output-box">
+                    <p id="converted-cylinder-output" >0.00</p>
+                </div>
+        
+                <div id="converted-axis" class="output-box">
+                    <p id="converted-axis-output">0.00</p>
+                </div>
+            </div> 
+
+        </div>
+
+        <button type="button" id="convert-btn">Convert</button><br>
+
+    </div>
 
     <script src="script.js"></script>
 
 </body>
+
 </html>

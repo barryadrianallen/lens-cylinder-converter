@@ -1,0 +1,90 @@
+html 
+{ 
+    box-sizing: border-box; 
+    min-height:100%;
+    min-width: 360px;
+}
+
+*, *::before, *::after 
+{ 
+    box-sizing: inherit; 
+}
+
+body {
+    background: linear-gradient(#D66D75, #E29587);
+    background-repeat: no-repeat;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+
+#wrapper {
+    max-width: 30em;
+    height:auto;
+    background-color: #fbd2ca;
+    border-radius: 5%;
+    padding: 0.5em 1em;
+    margin: 3em auto;
+    overflow: hidden;
+    box-shadow: -12px 15px 5px 0px rgba(139, 139, 139, 0.4);
+}
+
+h1 {
+    font-size: 2em;
+    text-align: center;
+}
+
+#main-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: auto
+}
+
+#input-section {
+    width: auto;
+}
+
+#output-section {
+    width: auto;
+}
+
+.input-box {
+    border-radius: 3px;
+    display: block;
+    margin: 0 auto 0 1em;
+}
+
+.input-label {
+    display: block;
+    margin: 0 auto 0.5em 1em;
+    text-align: left;
+    width:auto;
+}
+
+.output-box {
+    width: 100px;
+    height: 40px;
+    border: 1px solid black;
+    padding: 0 0 0 0.7em
+}
+
+#converted-sphere {
+    margin: 1em 0 1.2em 0;
+}
+
+#converted-cylinder {
+    margin-bottom: 1.3em;
+}
+
+#converted-axis {
+   
+}
+
+#convert-btn {
+    display: block;
+    margin: 1em auto;
+    border-radius: 5px;
+}
+
+@media (max-width: 600px) {
+    
+}
