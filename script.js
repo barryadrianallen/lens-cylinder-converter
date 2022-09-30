@@ -2,11 +2,12 @@ let inputtedSphere = document.getElementById("sphere-input");
 let inputtedCylinder = document.getElementById("cylinder-input");
 let inputtedAxis = document.getElementById("axis-input");
 let convertButton = document.getElementById("convert-btn");
+let resetButton = document.getElementById("reset-btn");
 let convertedSphereOutput = document.getElementById("converted-sphere-output");
 let convertedCylinderOutput = document.getElementById("converted-cylinder-output");
 let convertedAxisOutput = document.getElementById("converted-axis-output");
 
-//sphere - cylinder. Axis + or minus 90
+
 let calculateSphereConversion = () => {
     let convertedSphere = inputtedSphere.value - inputtedCylinder.value;
 
@@ -29,12 +30,13 @@ let calculateAxisConversion = () => {
 }
 
 let calculateCylinderConversion = () => {
+    let cylinderInput = inputtedCylinder.value;
     if (inputtedCylinder.value > 0) {
-        convertedCylinderOutput.innerText = "+" + Number(inputtedCylinder.value).toFixed(2);
+        convertedCylinderOutput.innerText = "-" + Number(cylinderInput).toFixed(2);
     }
     else 
     {
-        convertedCylinderOutput.innerText = Number(inputtedCylinder.value).toFixed(2);
+        convertedCylinderOutput.innerText = "+" + Number(inputtedCylinder.value.substring(1)).toFixed(2);
     }
 }
 
@@ -46,6 +48,19 @@ let convert = () => {
     //inputtedAxis.value;
 }
 
+let resetApp = () => {
+    inputtedSphere.value = "";
+    inputtedCylinder.value = "";
+    inputtedAxis.value = "";
+    convertedSphereOutput.innerText = "0.00";
+    convertedCylinderOutput.innerText = "0.00";
+    convertedAxisOutput.innerText = "0.00";
+}
+
 convertButton.addEventListener('click', () => {
     convert();
+});
+
+resetButton.addEventListener('click', () => {
+    resetApp();
 })
