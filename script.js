@@ -9,7 +9,7 @@ let convertedAxisOutput = document.getElementById("converted-axis-output");
 
 
 let calculateSphereConversion = () => {
-    let convertedSphere = inputtedSphere.value - inputtedCylinder.value;
+    let convertedSphere = Number(inputtedSphere.value) + Number(inputtedCylinder.value);
 
     if (convertedSphere > 0) {
         convertedSphereOutput.innerText = "+" + convertedSphere.toFixed(2);
