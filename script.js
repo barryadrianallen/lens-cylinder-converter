@@ -44,8 +44,6 @@ let convert = () => {
     calculateSphereConversion();
     calculateAxisConversion();
     calculateCylinderConversion()
-    //cinputtedCylinder.value;
-    //inputtedAxis.value;
 }
 
 let resetApp = () => {
