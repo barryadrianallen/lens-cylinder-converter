@@ -1,64 +1,136 @@
-let inputtedSphere = document.getElementById("sphere-input");
-let inputtedCylinder = document.getElementById("cylinder-input");
-let inputtedAxis = document.getElementById("axis-input");
-let convertButton = document.getElementById("convert-btn");
-let resetButton = document.getElementById("reset-btn");
-let convertedSphereOutput = document.getElementById("converted-sphere-output");
-let convertedCylinderOutput = document.getElementById("converted-cylinder-output");
-let convertedAxisOutput = document.getElementById("converted-axis-output");
-
-
-let calculateSphereConversion = () => {
-    let convertedSphere = Number(inputtedSphere.value) + Number(inputtedCylinder.value);
-
-    if (convertedSphere > 0) {
-        convertedSphereOutput.innerText = "+" + convertedSphere.toFixed(2);
-    }
-    else {
-        convertedSphereOutput.innerText = convertedSphere.toFixed(2);
-    }
+let App = {
+    inputtedSphere: document.getElementById("sphere-input"),
+    inputtedCylinder: document.getElementById("cylinder-input"),
+    inputtedAxis: document.getElementById("axis-input"),
+    convertButton: document.getElementById("convert-btn"),
+    resetButton: document.getElementById("reset-btn"),
+    convertedSphereOutput: document.getElementById("converted-sphere-output"),
+    convertedCylinderOutput: document.getElementById("converted-cylinder-output"),
+    convertedAxisOutput: document.getElementById("converted-axis-output"),
+    errorMessageDisplay: document.getElementById("error-message"),
+    validation: "bad"
 }
 
-let calculateAxisConversion = () => {
-    if (inputtedAxis.value <= 90) {
-        convertedAxisOutput.innerText = "@ " + ( Number(inputtedAxis.value) + 90 ) + "\u00B0";
+let hideErrorMessage = () => {
+    App.errorMessageDisplay.classList.add("hide");
+}
+
+let showErrorMessage = () => {
+    App.errorMessageDisplay.classList.remove("hide");
+}
+
+let resetInputs = () => {
+    App.inputtedSphere.value = "";
+    App.inputtedCylinder.value = "";
+    App.inputtedAxis.value = "";
+}
+
+let resetOutputs = () => {
+    App.convertedSphereOutput.innerText = "0.00";
+    App.convertedCylinderOutput.innerText = "0.00";
+    App.convertedAxisOutput.innerText = "0.00";
+}
+
+let resetApp = () => {
+    resetInputs();
+    resetOutputs();
+    App.validation = "bad";
+}
+
+let validateInput = (_sphere, _cylinder, _axis) => {
+
+    if ( isNaN(_sphere.value) || 
+         isNaN(_cylinder.value) || 
+         isNaN(_axis.value) ) 
+    {
+        App.errorMessageDisplay.innerText = "Input must be a number";
+        showErrorMessage();
+        App.validation = "bad"
+    } 
+    else if (_sphere.value === "" || 
+             _cylinder.value === "" || 
+             _axis.value === "")
+    {
+        App.errorMessageDisplay.innerText = "Please enter prescription";
+        showErrorMessage();
+        App.validation = "bad";
     }
     else 
     {
-        convertedAxisOutput.innerText = "@ " + ( Number(inputtedAxis.value) - 90 ) + "\u00B0";
+       hideErrorMessage();
+       App.validation = "good";
+    }
+}
+
+let calculateSphereConversion = () => {
+
+    if (App.validation === "good") {
+
+        let convertedSphere = Number(App.inputtedSphere.value) + Number(App.inputtedCylinder.value);
+
+        if (convertedSphere > 0) {
+            App.convertedSphereOutput.innerText = "+" + convertedSphere.toFixed(2);
+        }
+        else {
+            App.convertedSphereOutput.innerText = convertedSphere.toFixed(2);
+        }
+    }
+    else {
+        resetOutputs();
+    }
+
+}
+
+let calculateAxisConversion = () => {
+
+    if (App.validation === "good") {
+
+        if (App.inputtedAxis.value <= 90) {
+            App.convertedAxisOutput.innerText = "@ " + ( Number(App.inputtedAxis.value) + 90 ) + "\u00B0";
+        }
+        else 
+        {
+            App.convertedAxisOutput.innerText = "@ " + ( Number(App.inputtedAxis.value) - 90 ) + "\u00B0";
+        }
+    }
+    else {
+        resetOutputs();
     }
 }
 
 let calculateCylinderConversion = () => {
-    let cylinderInput = inputtedCylinder.value;
-    if (inputtedCylinder.value > 0) {
-        convertedCylinderOutput.innerText = "-" + Number(cylinderInput).toFixed(2);
+
+    if (App.validation === "good") {
+
+        let cylinderInput = App.inputtedCylinder.value;
+        if (App.inputtedCylinder.value > 0) {
+            App.convertedCylinderOutput.innerText = "-" + Number(cylinderInput).toFixed(2);
+        }
+        else 
+        {
+            App.convertedCylinderOutput.innerText = "+" + Number(cylinderInput.substring(1)).toFixed(2);
+        }
     }
-    else 
-    {
-        convertedCylinderOutput.innerText = "+" + Number(inputtedCylinder.value.substring(1)).toFixed(2);
+    else {
+        resetOutputs();
     }
 }
 
 let convert = () => {
+    validateInput(App.inputtedSphere, App.inputtedCylinder, App.inputtedAxis);
     calculateSphereConversion();
-    calculateAxisConversion();
-    calculateCylinderConversion()
+    calculateCylinderConversion();
+    calculateAxisConversion()
 }
 
-let resetApp = () => {
-    inputtedSphere.value = "";
-    inputtedCylinder.value = "";
-    inputtedAxis.value = "";
-    convertedSphereOutput.innerText = "0.00";
-    convertedCylinderOutput.innerText = "0.00";
-    convertedAxisOutput.innerText = "0.00";
-}
-
-convertButton.addEventListener('click', () => {
+App.convertButton.addEventListener('click', () => {
     convert();
 });
 
-resetButton.addEventListener('click', () => {
+App.resetButton.addEventListener('click', () => {
     resetApp();
+    hideErrorMessage();
 })
+
+resetApp();
+hideErrorMessage();
