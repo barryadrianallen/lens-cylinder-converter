@@ -24,7 +24,7 @@ body {
     background-color: white;
     border-radius: 5%;
     padding: 0.5em 1em 3em 1em;
-    margin: 8em auto;
+    margin: 3em auto;
     overflow: hidden;
     box-shadow: -12px 15px 5px 0px rgba(139, 139, 139, 0.4);
 }
@@ -158,5 +158,10 @@ h2 {
 
 .hide {
     visibility:hidden;
+}
+
+.giphy-embed {
+    display: block;
+    margin: 1em auto;
 }
 
