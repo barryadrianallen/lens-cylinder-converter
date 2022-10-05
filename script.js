@@ -66,6 +66,8 @@ let calculateSphereConversion = () => {
 
     if (App.validation === "good") {
 
+        App.inputtedSphere.value = (Math.round(App.inputtedSphere.value * 4) / 4).toFixed(2);
+
         let convertedSphere = Number(App.inputtedSphere.value) + Number(App.inputtedCylinder.value);
 
         if (convertedSphere > 0) {
@@ -102,13 +104,14 @@ let calculateCylinderConversion = () => {
 
     if (App.validation === "good") {
 
-        let cylinderInput = App.inputtedCylinder.value;
+        App.inputtedCylinder.value = (Math.round(App.inputtedCylinder.value * 4) / 4).toFixed(2);
+
         if (App.inputtedCylinder.value > 0) {
-            App.convertedCylinderOutput.innerText = "-" + Number(cylinderInput).toFixed(2);
+            App.convertedCylinderOutput.innerText = "-" + Number(App.inputtedCylinder.value);
         }
         else 
         {
-            App.convertedCylinderOutput.innerText = "+" + Number(cylinderInput.substring(1)).toFixed(2);
+            App.convertedCylinderOutput.innerText = "+" + Number(App.inputtedCylinder.value.substring(1));
         }
     }
     else {
